@@ -1,9 +1,10 @@
 const Total = ({exercises}) => {
-    const totalValue = exercises.reduce((accumulator, currentvalue) => {
-        return accumulator + currentvalue;
-    }, 0);
+    let totalExercises = 0;
+    exercises.forEach(exercise => {
+        totalExercises = totalExercises + exercise.exercises;
+    });
     return (
-        <p>Number of exercises {totalValue}</p>
+        <p>Number of exercises {totalExercises}</p>
     );
 }
 
