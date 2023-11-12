@@ -1,5 +1,13 @@
 import { useState } from 'react'
 
+const calculateAverage = (good, neutral, bad) => {
+  return (good - bad) / (good + neutral + bad);
+}
+const calculatePositive = (good, neutral, bad) => {
+  const total = good + neutral + bad;
+  return (100*good) / total;
+}
+
 const App = () => {
   // tallenna napit omaan tilaansa
   const [good, setGood] = useState(0)
@@ -17,6 +25,9 @@ const App = () => {
       <p>Good {good}</p>
       <p>Neutral {neutral}</p>
       <p>Bad {bad}</p>
+      <p>All {good + neutral + bad}</p>
+      <p>Average {calculateAverage(good, neutral, bad)}</p>
+      <p>Positive {calculatePositive(good, neutral, bad)}</p>
     </div>
   )
 }
