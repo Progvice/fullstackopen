@@ -3,7 +3,7 @@ sequenceDiagram
     participant server
     participant database
 
-    webURL https://studies.cs.helsinki.fi/exampleapp
+    webURL=https://studies.cs.helsinki.fi/exampleapp
 
     browser->>server: GET webURL/spa
     activate server
@@ -17,29 +17,29 @@ sequenceDiagram
 
     browser->>server: GET webURL/spa.js
     activate server
-    server-->>browser: Javascript file - spa.js
+    server-->>browser: JavaScript file - spa.js
     deactivate server
 
-    Note right of browser: Browser executes spa.js code and sends request to server to give all the notes
+    Note right of browser: Browser executes spa.js code and sends request to server to get all notes
 
     browser->>server: GET webURL/data.json
     activate server
     server-->>database: SELECT * FROM notes
     activate database
-    database->>server: List of notes
+    database-->>server: List of notes
     deactivate database
     server-->>browser: data.json (list of notes)
     deactivate server
-    
-    Note right of browser: Browser listens for form submits at spa.js. When form is submitted it will send request to server
+
+    Note right of browser: Browser listens for form submits in spa.js. When the form is submitted, it will send a request to the server
 
     browser->>server: POST webURL/new_note_spa
     activate server
     server-->>database: INSERT INTO notes (note) VALUES (note)
     activate database
-    database->>server: True|False
+    database-->>server: True|False
     deactivate database
-    server-->>browser: POST 201 webURL/new_note_spa {"message": "note created"}
+    server-->>browser: 201 Created webURL/new_note_spa {"message": "note created"}
     deactivate server
 
-    Note right of browser: Rerender page with information that is set to global variable "notes".
+    Note right of browser: Rerender the page with information that is set to the global variable "notes".
