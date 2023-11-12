@@ -14,14 +14,16 @@ const Statistics = (props) => {
 
     if(good !== 0 || neutral !== 0 || bad !== 0) {
         return (
-        <>
-            <StatisticLine text="good" value={good}/>
-            <StatisticLine text="neutral" value={neutral}/>
-            <StatisticLine text="bad" value={bad}/>
-            <StatisticLine text="All" value={good + neutral + bad}/>
-            <StatisticLine text="Average" value={calculateAverage(good, neutral, bad)}/>
-            <StatisticLine text="Positive" value={calculatePositive(good, neutral, bad) + '%'}/>
-        </>
+        <table>
+            <tbody>
+                <StatisticLine text="good" value={good}/>
+                <StatisticLine text="neutral" value={neutral}/>
+                <StatisticLine text="bad" value={bad}/>
+                <StatisticLine text="All" value={good + neutral + bad}/>
+                <StatisticLine text="Average" value={calculateAverage(good, neutral, bad)}/>
+                <StatisticLine text="Positive" value={calculatePositive(good, neutral, bad) + '%'}/>
+            </tbody>
+        </table>
         );
     }
     return (
