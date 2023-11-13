@@ -1,13 +1,8 @@
 {
   "persons": [
     {
-      "name": "Testi Testinen",
-      "phonenumber": "2222",
-      "id": 1
-    },
-    {
       "name": "Jani Juuso",
-      "phonenumber": "asdasdasd",
+      "phonenumber": "asdasd",
       "id": 2
     }
   ]
