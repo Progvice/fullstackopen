@@ -1,13 +1,16 @@
 const express = require('express');
 const morgan = require('morgan');
 const app = express();
+const cors = require('cors');
 app.use(express.json());
 
+app.use(cors({
+    origin: 'http://localhost:5173'
+}));
 morgan.token('rawbody', (req) => {
     console.log(req.body);
     return JSON.stringify(req.body) || '-';
 });
-
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :rawbody'));
 let persons = [
     { 
@@ -70,7 +73,7 @@ app.delete('/api/persons/:id', (req, res) => {
     res.json(persons);
 });
 
-app.post('/api/persons/add', (req, res) => {
+app.post('/api/persons', (req, res) => {
     const required = ['name', 'phonenumber'];
     required.forEach(field => {
         if(!req.body[field]) {
